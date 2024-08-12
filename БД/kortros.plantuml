@@ -1,0 +1,540 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class addresses {
+   address: varchar(255)
+   city: varchar(255)
+   description: varchar(500)
+   email: varchar(255)
+   latitude: double
+   longitude: double
+   open_hours: varchar(255)
+   phone: varchar(255)
+   images_id: bigint
+   metro_id: bigint
+   address_complex: varchar(255)
+   address_op: varchar(255)
+   phone_op: varchar(255)
+   phone_oz: varchar(255)
+   nav_link_complex: varchar(255)
+   nav_link_op: varchar(255)
+   id: bigint
+}
+class admins {
+   login: varchar(255)
+   password: varchar(255)
+   id: bigint
+}
+class article2categories {
+   article_id: bigint
+   category: varchar(255)
+}
+class article2pins {
+   article_id: bigint
+   pin_id: bigint
+}
+class article2projects {
+   article_id: bigint
+   project: varchar(255)
+}
+class articles {
+   header: varchar(255)
+   mini_text: varchar(1000)
+   preview_text: varchar(1000)
+   project_code: varchar(255)
+   content_id: bigint
+   gallery_id: bigint
+   image_id: bigint
+   region_id: bigint
+   positition: varchar(255)
+   position: varchar(255)
+   category: varchar(255)
+   article_type: varchar(255)
+   html: text
+   view_type: varchar(255)
+   video_link: varchar(1000)
+   header_color: varchar(255)
+   id: bigint
+}
+class design_features {
+   main_color: varchar(255)
+   secondary_color: varchar(255)
+   loader_id: bigint
+   color_actions: varchar(255)
+   color_calculator: varchar(255)
+   color_conditions: varchar(255)
+   color_features: varchar(255)
+   color_finishing: varchar(255)
+   color_flats: varchar(255)
+   color_gallery: varchar(255)
+   color_locations: varchar(255)
+   color_map: varchar(255)
+   color_plans: varchar(255)
+   color_progress: varchar(255)
+   header_logo_id: bigint
+   map_logo_id: bigint
+   id: bigint
+}
+class galleries {
+   description: varchar(1000)
+   file_type: varchar(255)
+   owner_id: bigint
+   to_hide: bit(1)
+   display_name: varchar(255)
+   priority: int
+   parent_id: bigint
+   display_name_accent_color: varchar(255)
+   id: bigint
+}
+class gallery2images {
+   gallery_id: bigint
+   media_id: bigint
+}
+class gallery_block2galleries {
+   gallery_block_id: bigint
+   galleries_id: bigint
+}
+class gallery_blocks {
+   description: varchar(1000)
+   to_hide: bit(1)
+   id: bigint
+}
+class main_sliders {
+   region_id: bigint
+   title: varchar(255)
+   id: bigint
+}
+class map_selectors {
+   json_string: text
+   project_code: varchar(255)
+}
+class medias {
+   description: varchar(255)
+   display_name: varchar(255)
+   file: varchar(255)
+   file_name: varchar(255)
+   file_type: varchar(255)
+   project_code: varchar(255)
+   priority: int
+   embed: varchar(255)
+   link: varchar(255)
+   link_name: varchar(255)
+   content_type: varchar(255)
+   mime_type: varchar(255)
+   original_file_name: varchar(255)
+   file_size: bigint
+   extension: varchar(255)
+   id: bigint
+}
+class metro {
+   color: varchar(255)
+   name: varchar(255)
+   type: varchar(255)
+   region_id: bigint
+   id: bigint
+}
+class page_settings {
+   dtype: varchar(31)
+   settings_key: varchar(255)
+   value: varchar(255)
+   to_hide: bit(1)
+   show_finishing: bit(1)
+   show_gallery: bit(1)
+   show_mortgage_calculator: bit(1)
+   show_purchase_terms: bit(1)
+   id: bigint
+}
+class participants_blocks {
+   id: bigint
+}
+class pins {
+   available: bit(1)
+   value: varchar(255)
+   id: bigint
+}
+class project2buildings {
+   project_id: bigint
+   buildings_id: bigint
+}
+class project2queues {
+   project_id: bigint
+   queues_id: bigint
+}
+class project_building2sections {
+   building_id: bigint
+   project_section_floors_id: bigint
+}
+class project_buildings {
+   address: varchar(1000)
+   building_id: bigint
+   building_num: int
+   building_state: varchar(255)
+   building_type: varchar(255)
+   built_year: int
+   count_free: int
+   count_total: int
+   delivery_period: varchar(255)
+   floors_count: int
+   key_issuance: bit(1)
+   mounting_beginning: varchar(255)
+   name: varchar(255)
+   ready_quarter: int
+   section_count: int
+   status: int
+   queue_id: bigint
+   active: bit(1)
+   real_building_num: varchar(255)
+   id: bigint
+}
+class project_characteristics {
+   description: varchar(255)
+   location: varchar(255)
+   parking: varchar(255)
+   project_class: varchar(255)
+   sale_status: varchar(255)
+   live: bit(1)
+   sale_start: bit(1)
+   time_by_metro: varchar(255)
+   time_to_metro: varchar(255)
+   mortgage_min_price: varchar(255)
+   min_price: varchar(255)
+   id: bigint
+}
+class project_common_prices {
+   id: bigint
+}
+class project_data_by_rooms {
+   cost: double
+   count: double
+   room_count: bigint
+   square: double
+   id: bigint
+}
+class project_data_by_rooms2buildings {
+   building_id: bigint
+   by_rooms_id: bigint
+}
+class project_data_by_rooms2projects {
+   price_id: bigint
+   by_rooms_id: bigint
+}
+class project_documents_blocks {
+   description: varchar(1000)
+   documents_id: bigint
+   id: bigint
+}
+class project_extended_info {
+   about_id: bigint
+   benefits_id: bigint
+   contact_id: bigint
+   documents_id: bigint
+   features_id: bigint
+   finishing_id: bigint
+   gallery_id: bigint
+   general_plan_id: bigint
+   location_id: bigint
+   participants_id: bigint
+   progress_id: bigint
+   slider_id: bigint
+   plans_id: bigint
+   progress_data_id: bigint
+   documents_data_id: bigint
+   participants_block_id: bigint
+   id: bigint
+}
+class project_info {
+   builder: varchar(255)
+   code: varchar(255)
+   flats_number: bigint
+   name: varchar(255)
+   site: varchar(255)
+   address_id: bigint
+   characteristics_id: bigint
+   logo_image_id: bigint
+   main_image_id: bigint
+   prices_id: bigint
+   region_id: bigint
+   statuses_id: bigint
+   sub_domen: varchar(255)
+   to_show: bit(1)
+   priority: int
+   design_features_id: bigint
+   to_hide: bit(1)
+   guid: varchar(255)
+   tour3d: varchar(255)
+   presentation_id: bigint
+   id: bigint
+}
+class project_participant_block2participants {
+   block_id: bigint
+   participants_id: bigint
+}
+class project_participants {
+   description: varchar(1000)
+   header: varchar(255)
+   priority: int
+   site: varchar(255)
+   logo_id: bigint
+   id: bigint
+}
+class project_progress {
+   description: varchar(1000)
+   to_hide: bit(1)
+   id: bigint
+}
+class project_progress2progress_unit_blocks {
+   progress_id: bigint
+   progress_unit_blocks_id: bigint
+}
+class project_progress_blocks2progress_units {
+   progress_unit_block_id: bigint
+   progress_units_id: bigint
+}
+class project_progress_unit_blocks {
+   grouped_by: varchar(255)
+   name: varchar(255)
+   priority: int
+   to_hide: bit(1)
+   id: bigint
+}
+class project_progress_units {
+   date: datetime(6)
+   to_hide: bit(1)
+   gallery_block_id: bigint
+   id: bigint
+}
+class project_queues {
+   building_state: varchar(255)
+   built_year: int
+   key_issuance: bit(1)
+   number: bigint
+   ready_quarter: int
+   active: bit(1)
+   id: bigint
+}
+class project_section_floors {
+   floor_count: bigint
+   section: bigint
+   id: bigint
+}
+class project_statuses {
+   id: bigint
+}
+class publications {
+   approval_status: varchar(255)
+   date_created: date
+   display_date: date
+   last_modified_date: date
+   link: varchar(255)
+   link_name: varchar(255)
+   id: bigint
+}
+class regions {
+   name: varchar(255)
+   code: varchar(255)
+   id: bigint
+}
+class regions2codes {
+   region_id: bigint
+   region: varchar(255)
+}
+class settings_flat_page {
+   deleted: bit(1)
+   project_id: bigint
+   mortgage_calculator_settings_id: bigint
+   visibility_settings_id: bigint
+   block_position_settings_id: bigint
+   id: bigint
+}
+class settings_flat_page_block_positions {
+   features_position: int
+   finishing_position: int
+   mortgage_calculator_position: int
+   progress_position: int
+   purchase_terms_position: int
+   actions_position: int
+   benefits_position: int
+   flats_position: int
+   gallery_position: int
+   news_position: int
+   project_id: bigint
+   page_type: int
+   id: bigint
+}
+class settings_flat_page_block_visibility {
+   show_features: bit(1)
+   show_finishing: bit(1)
+   show_mortgage_calculator: bit(1)
+   show_purchase_terms: bit(1)
+   show_progress: bit(1)
+   id: bigint
+}
+class settings_mortgage_calculator {
+   cost: int
+   initial_payment: int
+   loan_period: int
+   max_cost: int
+   max_initial_payment: int
+   min_cost: int
+   min_initial_payment: int
+   mortgage_type: varchar(255)
+   project_id: bigint
+   project_uuid: varchar(255)
+   id: bigint
+}
+class settings_page_block_positions {
+   actions_position: int
+   benefits_position: int
+   features_position: int
+   finishing_position: int
+   flats_position: int
+   gallery_position: int
+   mortgage_calculator_position: int
+   news_position: int
+   page_type: int
+   progress_position: int
+   project_id: bigint
+   purchase_terms_position: int
+   location_position: int
+   window_view_position: int
+   participants_position: int
+   id: bigint
+}
+class statuses2projects {
+   status_id: bigint
+   status: varchar(255)
+}
+class tender_notices {
+   created: datetime(6)
+   display_date: varchar(255)
+   last_updated: datetime(6)
+   name: varchar(1000)
+   document_id: bigint
+   region_id: bigint
+   to_hide: bit(1)
+   id: bigint
+}
+class tenders {
+   contract_month: varchar(255)
+   created: datetime(6)
+   last_updated: datetime(6)
+   name: varchar(255)
+   project: varchar(255)
+   quarter: int
+   region_name: varchar(255)
+   tender_type: varchar(255)
+   to_hide: bit(1)
+   year: int
+   region_id: bigint
+   id: bigint
+}
+class users {
+   user_role: varchar(255)
+   username: varchar(255)
+   id: bigint
+}
+class visibility_settings {
+   show_finishing: bit(1)
+   show_gallery: bit(1)
+   show_mortgage_calculator: bit(1)
+   show_purchase_terms: bit(1)
+   id: bigint
+}
+class visual_selectors {
+   html: text
+   project_code: varchar(255)
+   selector_type: int
+   widget_type: int
+   id: bigint
+}
+class widgets {
+   html: text
+   project_code: varchar(255)
+   widget_type: int
+   id: bigint
+}
+
+addresses                               -[#595959,plain]-^  galleries                              : "images_id:id"
+addresses                               -[#595959,plain]-^  metro                                  : "metro_id:id"
+admins                                  -[#595959,plain]-^  users                                  : "id"
+article2categories                      -[#595959,plain]-^  articles                               : "article_id:id"
+article2pins                            -[#595959,plain]-^  articles                               : "article_id:id"
+article2pins                            -[#595959,plain]-^  pins                                   : "pin_id:id"
+article2projects                        -[#595959,plain]-^  articles                               : "article_id:id"
+articles                                -[#595959,plain]-^  galleries                              : "gallery_id:id"
+articles                                -[#595959,plain]-^  medias                                 : "image_id:id"
+articles                                -[#595959,plain]-^  medias                                 : "content_id:id"
+articles                                -[#595959,plain]-^  publications                           : "id"
+articles                                -[#595959,plain]-^  regions                                : "region_id:id"
+design_features                         -[#595959,plain]-^  medias                                 : "loader_id:id"
+design_features                         -[#595959,plain]-^  medias                                 : "header_logo_id:id"
+design_features                         -[#595959,plain]-^  medias                                 : "map_logo_id:id"
+gallery2images                          -[#595959,plain]-^  galleries                              : "gallery_id:id"
+gallery2images                          -[#595959,plain]-^  medias                                 : "media_id:id"
+gallery_block2galleries                 -[#595959,plain]-^  galleries                              : "galleries_id:id"
+gallery_block2galleries                 -[#595959,plain]-^  gallery_blocks                         : "gallery_block_id:id"
+main_sliders                            -[#595959,plain]-^  galleries                              : "id"
+main_sliders                            -[#595959,plain]-^  regions                                : "region_id:id"
+metro                                   -[#595959,plain]-^  regions                                : "region_id:id"
+project2buildings                       -[#595959,plain]-^  project_buildings                      : "buildings_id:id"
+project2buildings                       -[#595959,plain]-^  project_extended_info                  : "project_id:id"
+project2queues                          -[#595959,plain]-^  project_info                           : "project_id:id"
+project2queues                          -[#595959,plain]-^  project_queues                         : "queues_id:id"
+project_building2sections               -[#595959,plain]-^  project_buildings                      : "building_id:id"
+project_building2sections               -[#595959,plain]-^  project_section_floors                 : "project_section_floors_id:id"
+project_buildings                       -[#595959,plain]-^  project_queues                         : "queue_id:id"
+project_data_by_rooms2buildings         -[#595959,plain]-^  project_buildings                      : "building_id:id"
+project_data_by_rooms2buildings         -[#595959,plain]-^  project_data_by_rooms                  : "by_rooms_id:id"
+project_data_by_rooms2projects          -[#595959,plain]-^  project_common_prices                  : "price_id:id"
+project_data_by_rooms2projects          -[#595959,plain]-^  project_data_by_rooms                  : "by_rooms_id:id"
+project_documents_blocks                -[#595959,plain]-^  galleries                              : "documents_id:id"
+project_extended_info                   -[#595959,plain]-^  addresses                              : "contact_id:id"
+project_extended_info                   -[#595959,plain]-^  galleries                              : "slider_id:id"
+project_extended_info                   -[#595959,plain]-^  galleries                              : "gallery_id:id"
+project_extended_info                   -[#595959,plain]-^  galleries                              : "general_plan_id:id"
+project_extended_info                   -[#595959,plain]-^  galleries                              : "about_id:id"
+project_extended_info                   -[#595959,plain]-^  galleries                              : "benefits_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "finishing_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "documents_data_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "location_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "participants_block_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "features_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "gallery_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "progress_data_id:id"
+project_extended_info                   -[#595959,plain]-^  gallery_blocks                         : "plans_id:id"
+project_extended_info                   -[#595959,plain]-^  participants_blocks                    : "participants_id:id"
+project_extended_info                   -[#595959,plain]-^  participants_blocks                    : "participants_block_id:id"
+project_extended_info                   -[#595959,plain]-^  project_documents_blocks               : "documents_id:id"
+project_extended_info                   -[#595959,plain]-^  project_info                           : "id"
+project_extended_info                   -[#595959,plain]-^  project_progress                       : "progress_id:id"
+project_info                            -[#595959,plain]-^  addresses                              : "address_id:id"
+project_info                            -[#595959,plain]-^  design_features                        : "design_features_id:id"
+project_info                            -[#595959,plain]-^  medias                                 : "presentation_id:id"
+project_info                            -[#595959,plain]-^  medias                                 : "main_image_id:id"
+project_info                            -[#595959,plain]-^  medias                                 : "logo_image_id:id"
+project_info                            -[#595959,plain]-^  project_characteristics                : "characteristics_id:id"
+project_info                            -[#595959,plain]-^  project_common_prices                  : "prices_id:id"
+project_info                            -[#595959,plain]-^  project_statuses                       : "statuses_id:id"
+project_info                            -[#595959,plain]-^  regions                                : "region_id:id"
+project_participant_block2participants  -[#595959,plain]-^  participants_blocks                    : "block_id:id"
+project_participant_block2participants  -[#595959,plain]-^  project_participants                   : "participants_id:id"
+project_participants                    -[#595959,plain]-^  medias                                 : "logo_id:id"
+project_progress2progress_unit_blocks   -[#595959,plain]-^  project_progress                       : "progress_id:id"
+project_progress2progress_unit_blocks   -[#595959,plain]-^  project_progress_unit_blocks           : "progress_unit_blocks_id:id"
+project_progress_blocks2progress_units  -[#595959,plain]-^  project_progress_unit_blocks           : "progress_unit_block_id:id"
+project_progress_blocks2progress_units  -[#595959,plain]-^  project_progress_units                 : "progress_units_id:id"
+project_progress_units                  -[#595959,plain]-^  gallery_blocks                         : "gallery_block_id:id"
+regions2codes                           -[#595959,plain]-^  regions                                : "region_id:id"
+settings_flat_page                      -[#595959,plain]-^  settings_flat_page_block_positions     : "block_position_settings_id:id"
+settings_flat_page                      -[#595959,plain]-^  settings_flat_page_block_visibility    : "visibility_settings_id:id"
+settings_flat_page                      -[#595959,plain]-^  settings_mortgage_calculator           : "mortgage_calculator_settings_id:id"
+settings_flat_page                      -[#595959,plain]-^  visibility_settings                    : "visibility_settings_id:id"
+settings_mortgage_calculator            -[#595959,plain]-^  project_info                           : "project_id:id"
+statuses2projects                       -[#595959,plain]-^  project_statuses                       : "status_id:id"
+tender_notices                          -[#595959,plain]-^  medias                                 : "document_id:id"
+tender_notices                          -[#595959,plain]-^  regions                                : "region_id:id"
+tenders                                 -[#595959,plain]-^  regions                                : "region_id:id"
+@enduml
